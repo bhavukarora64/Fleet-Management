@@ -1,7 +1,0 @@
-timestamps,AccelerationX,AccelerationY,AccelerationZ,AngularRateX,AngularRateY,AngularRateZ,ImuValid,AltitudeValid,Altitude,AltitudeAccuracy,Speed,SpeedAccuracy,SpeedValid,TimeValid,TimeConfirmed,Epoch,FenceValid,FenceCombined,Fence1,Fence2,Fence3,Fence4,PositionAccuracy,Latitude,Longitude,PositionValid,AttitudeValid,Roll,Pitch,Heading,RollAccuracy,PitchAccuracy,HeadingAccuracy,DistanceTrip,DistanceAccuracy,DistanceValid,DistanceTotal,FixType,Satellites
-,m/s^2,m/s^2,m/s^2,deg/s,deg/s,deg/s,,,m,m,m/s,m/s,,,,sec,,,,,,,m,deg,deg,,,deg,deg,deg,deg,deg,deg,m,m,,km,,
-2022-05-23 20:25:00.009600+01:00,0.25,0.625,10.125,0.25,0,-0.75,1,1,97.4,2,5.497,0.104,1,1,1,1653333895,1,0,0,0,0,0,3,56.071317,10.160941,1,1,0,-3.1,111.7,0.3,0.3,1,17,4,1,287,4,13
-2022-05-24 06:34:59.387500032+01:00,-0.5,1,11,-0.75,-2.25,-1.75,1,1,98.3,3,19.256,0.086,1,1,1,1653370493,1,0,0,0,0,0,3,56.085915,10.186205,1,1,0.7,0,40.1,0.2,0.2,0.3,2322,12,1,294,4,12
-2022-05-24 06:34:59.487549952+01:00,-1.25,0.375,10.625,-0.75,0.75,-1.5,1,1,70,3,19.256,0.086,1,1,1,1653370493,1,0,0,0,0,0,3,56.085915,10.186205,1,1,0.7,0,40.1,0.2,0.2,0.3,2322,12,1,294,4,12
-2022-05-24 06:34:59.589550080+01:00,-0.875,0.25,10.625,2,1,-1,1,1,71.7,3,19.256,0.086,1,1,1,1653370493,1,0,0,0,0,0,3,56.085915,10.186205,1,1,0.7,0,40.1,0.2,0.2,0.3,2322,12,1,294,4,12
-2022-05-24 06:34:59.700550144+01:00,-1,1,8.375,3,-1.5,-1.25,1,1,50.7,3,19.256,0.086,1,1,1,1653370493,1,0,0,0,0,0,3,56.085915,10.186205,1,1,0.7,0,40.1,0.2,0.2,0.3,2322,12,1,294,4,12
