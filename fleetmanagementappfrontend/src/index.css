@@ -1,0 +1,24 @@
+:root {
+  --primary-color: #007bff; /* Example color, replace with Fleetio's primary color */
+  --secondary-color: #6c757d; /* Example secondary color */
+  --background-color: #f8f9fa;
+  --text-color: #343a40;
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .navbar li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

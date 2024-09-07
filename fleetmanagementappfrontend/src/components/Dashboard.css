@@ -1,0 +1,35 @@
+/* Dashboard.css */
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "info-section map-section"
+    "alerts-section history-section";
+  gap: 20px;
+}
+
+.info-section {
+  grid-area: info-section;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.info-box, .map-box, .alerts-box, .history-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.map-section {
+  grid-area: map-section;
+}
+
+.alerts-section {
+  grid-area: alerts-section;
+}
+
+.history-section {
+  grid-area: history-section;
+}

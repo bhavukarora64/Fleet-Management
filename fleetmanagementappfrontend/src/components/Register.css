@@ -1,0 +1,123 @@
+
+  /* background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url('https://cdn.dribbble.com/users/2129935/screenshots/12293812/hand_drawn_animations_5.gif') no-repeat center center; */
+/* Register.css */
+
+/* Background container styling */
+.background-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url('https://cdn.dribbble.com/users/2129935/screenshots/12293812/hand_drawn_animations_5.gif') no-repeat center center;
+  background-size: cover;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Form container styling */
+.register-form {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  height: 90vh; /* Fixed height for the form container */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent overflowing */
+}
+
+/* Scrollable content within the form */
+.form-content {
+  flex-grow: 1;
+  overflow-y: auto; /* Enables vertical scrolling */
+  padding-right: 0.5rem; /* Ensure padding for the scrollbar */
+  margin-bottom: 1rem;
+}
+
+/* Individual form fields styling */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Form labels and inputs */
+.form-group label {
+  width: 200px; /* Fixed width for labels */
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  flex: 1;
+  padding: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Tab button styling */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.tab-button.active {
+  border-bottom: 2px solid #007bff;
+  color: #007bff;
+}
+
+/* Submit button styling */
+.btn-submit {
+  width: 100%;
+  padding: 0.50rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .register-form {
+    padding: 1rem;
+    height: 90vh; /* Slightly taller on smaller screens */
+  }
+  
+  .form-group label, 
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.9rem;
+  }
+  
+  .tab-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

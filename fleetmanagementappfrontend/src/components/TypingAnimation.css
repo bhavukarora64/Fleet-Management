@@ -1,0 +1,21 @@
+.typing-container {
+    display: inline;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 0.15em solid orange;
+  }
+  
+  .cursor {
+    display: inline;
+    animation: blink 0.7s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: orange;
+    }
+  }
+  
