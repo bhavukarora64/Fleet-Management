@@ -16,7 +16,7 @@ function GeneralInfo() {
   useEffect(() => {
     if (userId && vehicleId) {  // Ensure both userId and vehicleId are available
       axios
-        .get(`http://localhost:3001/vehicle/getvehicleData`, { 
+        .get(`https://fleet-management-eta.vercel.app/vehicle/getvehicleData`, { 
           params: { 
             userId, 
             vehicleId 

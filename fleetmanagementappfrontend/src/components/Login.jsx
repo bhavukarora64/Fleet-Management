@@ -15,7 +15,7 @@ const Login = () => {
     const userData = { emailID: email, password };
 
     try {
-      const response = await axios.post('http://localhost:3001/login', userData, {
+      const response = await axios.post('https://fleet-management-eta.vercel.app/login', userData, {
         withCredentials: true,  // Include credentials in the request
       });
       console.log('Login successful:', response); // Debugging log
@@ -28,12 +28,12 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:3001/login/auth/google'; // Redirect to the backend route for Google OAuth
+    window.location.href = 'https://fleet-management-eta.vercel.app/login/auth/google'; // Redirect to the backend route for Google OAuth
   };
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/logout', loggedIn ,{
+      const response = await axios.post('https://fleet-management-eta.vercel.app/logout', loggedIn ,{
       withCredentials: true,
       credentials: "include", 
       });

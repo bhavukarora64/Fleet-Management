@@ -48,7 +48,7 @@ module.exports = function(passport) {
         new GoogleStrategy({
             clientID: process.env.GOOGLE_CLIENT_CODE,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: 'http://localhost:3001/login/auth/google/secrets',
+            callbackURL: 'https://fleet-management-eta.vercel.app/login/auth/google/secrets',
             userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
         },
         async (accessToken, refreshToken, profile, done) => {

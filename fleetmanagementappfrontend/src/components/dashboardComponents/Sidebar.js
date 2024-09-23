@@ -43,7 +43,7 @@ function Sidebar(user) {
     if (userId) {
       const fetchVehicles = async () => {
         try {
-          const response = await axios.get(`http://localhost:3001/vehicle/getvehicles?userId=${userId}`);
+          const response = await axios.get(`https://fleet-management-eta.vercel.app/vehicle/getvehicles?userId=${userId}`);
           setVehicles(response.data.vehicles);
         } catch (error) {
           console.error('Error fetching vehicles:', error);
@@ -69,7 +69,7 @@ function Sidebar(user) {
   const handleRegister = async () => {
     try {
       console.log(userId);
-      await axios.post('http://localhost:3001/vehicle/register', {
+      await axios.post('https://fleet-management-eta.vercel.app/vehicle/register', {
         vehicleData,
         user_id: userId,
       });
@@ -78,7 +78,7 @@ function Sidebar(user) {
       setOpen(false);
 
       // Refresh the list of vehicles
-      const response = await axios.get(`http://localhost:3001/vehicle/getvehicles?userId=${userId}`);
+      const response = await axios.get(`https://fleet-management-eta.vercel.app/vehicle/getvehicles?userId=${userId}`);
       setVehicles(response.data.vehicles);
     } catch (error) {
       console.error('Error registering vehicle:', error);

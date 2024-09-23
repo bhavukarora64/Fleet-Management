@@ -23,7 +23,7 @@ const Map = () => {
     const fetchVehicleLocation = async () => {
       if (vehicleId && userId) { // Ensure both vehicleId and userId are available
         try {
-          const response = await axios.get('http://localhost:3001/vehicle/getVehiclePerformanceMetrics', {
+          const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getVehiclePerformanceMetrics', {
             params: { vehicleId, userId }, // Pass both vehicleId and userId as parameters
           });
 
@@ -59,7 +59,7 @@ const Map = () => {
         </Typography>
         <div className="map-content">
           {/* Load Google Maps API */}
-          <LoadScript googleMapsApiKey="AIzaSyCS6s5EfSjff0Dv6SH5oogus0kui4hK4s8">
+          <LoadScript googleMapsApiKey = {process.env.GOOGLE_MAPS_SECRET} >
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={location} // Center the map on the vehicle location

@@ -19,7 +19,7 @@ const AggressiveAcceleration = () => {
       if (vehicleId && userId) { // Ensure both vehicleId and userId are available
         try {
           console.log('Fetching aggressive acceleration data...');
-          const response = await axios.get('http://localhost:3001/vehicle/getVehiclePerformanceMetrics', {
+          const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getVehiclePerformanceMetrics', {
             params: { vehicleId, userId }, // Pass both vehicleId and userId as parameters
           });
 

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     if (token) {
       setIsAuthenticated(true);
       try {
-        const response = await axios.get('http://localhost:3001/api/user', {
+        const response = await axios.get('https://fleet-management-eta.vercel.app/api/user', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUserId(response.data.userId); // Assuming the API returns userId

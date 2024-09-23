@@ -21,7 +21,7 @@ const NavBar = () => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
           <Nav.Link href="/" style={{ fontSize: '1rem' }}>Home</Nav.Link>
-          <Nav.Link href="http://localhost:3001/dashboard" style={{ fontSize: '1rem' }}>Dashboard</Nav.Link>
+          <Nav.Link href="https://fleet-management-eta.vercel.app/dashboard" style={{ fontSize: '1rem' }}>Dashboard</Nav.Link>
           <NavDropdown title="More" id="basic-nav-dropdown" style={{ fontSize: '1rem' }}>
             <NavDropdown.Item href="/maps">Maps</NavDropdown.Item>
             <NavDropdown.Item href="/login">Sign In</NavDropdown.Item>
