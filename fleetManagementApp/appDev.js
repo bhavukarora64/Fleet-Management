@@ -62,6 +62,10 @@ dbConnector()
   });
 
 // Route setup
+app.get("/", (req, res) => {
+  console.log("hello");
+  res.send("Hello, World!");
+});
 app.use("/vehicle", vehicle);
 app.use("/dashboard", dashboard);
 app.use("/driver", driver);
