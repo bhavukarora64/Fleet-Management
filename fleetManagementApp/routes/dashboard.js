@@ -3,17 +3,17 @@ const express = require('express');
 const router = express.Router();
 const dashboardController = require('../controllers/dashboard');
 
-router.get('/', (req, res) => {
-  res.send("hello");
-})
-
 // router.get('/', (req, res) => {
-//   if (req.isAuthenticated()) {
-//     res.redirect('http://localhost:3000/dashboard');
-//   } else {
-//     res.redirect('http://localhost:3000/login');
-//   }
-// });
+//   res.send("hello");
+// })
+
+router.get('/', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.redirect('http://localhost:3000/dashboard');
+  } else {
+    res.redirect('http://localhost:3000/login');
+  }
+});
 
 // New route to fetch vehicle performance data
 router.get('/data', dashboardController.getVehiclePerformanceData);
