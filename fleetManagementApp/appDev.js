@@ -30,7 +30,7 @@ const login = require('./routes/login.js');
 const logout = require('./routes/logout.js');
 
 // Middleware setup
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));  // Adjust CORS to allow credentials
+app.use(cors({ origin: ['http://localhost:3000', 'https://fleet-management-eta.vercel.app/'], credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
@@ -61,11 +61,20 @@ dbConnector()
     console.error("Error connecting to MongoDB:", error);
   });
 
+  app.use((req, res) => {
+    console.log(`404 Not Found: ${req.method} ${req.url}`);
+    res.status(404).send("Sorry, can't find that!");
+  });
+  app.use((req, res, next) => {
+    console.log(`Received request: ${req.method} ${req.url}`);
+    next();
+  });
 // Route setup
 app.get("/", (req, res) => {
   console.log("hello");
   res.send("Hello, World!");
 });
+
 app.use("/vehicle", vehicle);
 app.use("/dashboard", dashboard);
 app.use("/driver", driver);
