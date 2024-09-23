@@ -30,7 +30,7 @@ const login = require('./routes/login.js');
 const logout = require('./routes/logout.js');
 
 // Middleware setup
-app.use(cors({ origin: ['http://localhost:3000', 'https://fleet-management-eta.vercel.app/'], credentials: true }));
+app.use(cors({ origin: ['https://fleet-management-hxmj.vercel.app/', 'https://fleet-management-eta.vercel.app/'], credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());

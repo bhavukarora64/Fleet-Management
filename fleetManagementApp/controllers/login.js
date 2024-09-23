@@ -27,5 +27,5 @@ exports.googleLogin = (req, res, next) => {
 
 // Google OAuth callback controller
 exports.googleCallback = (req, res) => {
-  res.redirect('http://localhost:3000/dashboard');  // Ensure this URL matches your frontend URL
+  res.redirect('https://fleet-management-hxmj.vercel.app//dashboard');  // Ensure this URL matches your frontend URL
 };
