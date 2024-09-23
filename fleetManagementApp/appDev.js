@@ -61,21 +61,15 @@ dbConnector()
     console.error("Error connecting to MongoDB:", error);
   });
 
-app.use((req, res) => {
-  console.log(`404 Not Found: ${req.method} ${req.url}`);
-  res.status(404).send("Sorry, can't find that!");
-});
-app.use((req, res, next) => {
-  console.log(`Received request: ${req.method} ${req.url}`);
-  next();
-});
+
 // Route setup
+
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 app.get("/", (req, res) => {
   console.log("hello");
   res.send("Hello, World!");
 });
-
-app.get('/favicon.ico', (req, res) => res.status(204));
 
 app.use("/vehicle", vehicle);
 app.use("/dashboard", dashboard);
@@ -87,6 +81,14 @@ app.use("/login", login);
 app.use("/logout", logout);
 app.use('/user', users);
 
+app.use((req, res) => {
+  console.log(`404 Not Found: ${req.method} ${req.url}`);
+  res.status(404).send("Sorry, can't find that!");
+});
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
 
 // // Broadcast data to all WebSocket clients
 // function broadcastToClients(data) {
