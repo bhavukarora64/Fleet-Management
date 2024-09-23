@@ -9,9 +9,9 @@ const dashboardController = require('../controllers/dashboard');
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    res.redirect('http://localhost:3000/dashboard');
+    res.redirect('https://fleet-management-hxmj.vercel.app//dashboard');
   } else {
-    res.redirect('http://localhost:3000/login');
+    res.redirect('https://fleet-management-hxmj.vercel.app/login');
   }
 });
 
