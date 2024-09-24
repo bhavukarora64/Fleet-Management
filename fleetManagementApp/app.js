@@ -30,7 +30,7 @@ const sessionRoute = require('./routes/session.js');
 const logout = require('./routes/logout.js');
 
 // Middleware setup
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'fleet-management-5eyg.vercel.app', credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
