@@ -73,7 +73,7 @@ const Maps = () => {
           Vehicle Locations
         </Typography>
         <div className="map-content">
-          <LoadScript googleMapsApiKey="AIzaSyCS6s5EfSjff0Dv6SH5oogus0kui4hK4s8">
+          <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_SECRET}>
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={defaultCenter}
