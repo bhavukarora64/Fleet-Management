@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Master thesis project: fleet-management",
   "main": "./fleetManagementApp/appDev.js",
-"scripts": {
-  "start": "node appDev.js"
-},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "author": "Bhavuk",
   "license": "ISC",
   "dependencies": {

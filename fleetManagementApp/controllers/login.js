@@ -27,5 +27,13 @@ exports.googleLogin = (req, res, next) => {
 
 // Google OAuth callback controller
 exports.googleCallback = (req, res) => {
-  res.redirect('https://fleet-management-hxmj.vercel.app//dashboard');  // Ensure this URL matches your frontend URL
+  
+  if (req.user && req.user.user_id) {
+    const userId = req.user.user_id;
+    console.log('userId in login oauth:', userId)
+    res.redirect(`http://localhost:3000/dashboard?userId=${userId}`);
+  } else {
+    console.error('Error: req.user is undefined or does not contain user_id.');
+    res.redirect('http://localhost:3000/login'); // Redirect back to login or show an error page
+  }
 };

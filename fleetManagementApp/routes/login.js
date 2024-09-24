@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const loginController = require('../controllers/login');
+const loginController = require('../Controllers/login');
 
 
 // Local login route

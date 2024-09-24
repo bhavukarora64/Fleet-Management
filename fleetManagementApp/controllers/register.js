@@ -1,15 +1,14 @@
-// controllers/register.js
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
-const connectToMySQL = require('../helperScripts/mysqlDB'); // Import the MySQL connection
+const pool = require('../helperScripts/mysqlDB'); // Import the MySQL connectToMySQL
 const fs = require('fs');
 const path = require('path');
 
 exports.userRegistration = async (req, res) => {
-    const { username, emailID, password, confirmPassword } = req.body;
+    const { username, emailID, password, confirmPassword, role, name, license_number, phone, address } = req.body;
     let errors = [];
 
-    if (!emailID || !username || !password || !confirmPassword) {
+    if (!emailID || !username || !password || !confirmPassword || !role) {
         errors.push({ msg: 'Please fill in all fields' });
     }
 
@@ -25,8 +24,7 @@ exports.userRegistration = async (req, res) => {
         return res.status(400).json({ errors });
     } else {
         try {
-            // connectToMySQL = await connectToMySQL(); // Get MySQL connection
-
+            connectToMySQL = await pool.getConnection();
             // Check if the email already exists
             const [userRows] = await connectToMySQL.query('SELECT * FROM UserInformation WHERE email_address = ?', [emailID]);
             if (userRows.length > 0) {
@@ -49,10 +47,11 @@ exports.userRegistration = async (req, res) => {
             const hashedPassword = await bcrypt.hash(password, costFactor);
 
             // Insert into UserInformation
-            await connectToMySQL.query('INSERT INTO UserInformation (user_id, username, email_address, registration_date) VALUES (?, ?, ?, ?)', [
+            await connectToMySQL.query('INSERT INTO UserInformation (user_id, username, email_address, role, registration_date) VALUES (?, ?, ?, ?, ?)', [
                 newUserId,
                 username,
                 emailID,
+                role,
                 date
             ]);
 
@@ -61,6 +60,23 @@ exports.userRegistration = async (req, res) => {
                 newUserId,
                 hashedPassword
             ]);
+
+            // Handle driver-specific logic
+            if (role === 'driver') {
+                if (!name || !license_number || !phone || !address) {
+                    errors.push({ msg: 'Please provide all driver details' });
+                    return res.status(400).json({ errors });
+                }
+
+                // Insert into Driver table
+                await connectToMySQL.query('INSERT INTO driver (userId, Name, `License Number`, `Phone Number`, Address) VALUES (?, ?, ?, ?, ?)', [
+                    newUserId,
+                    name,
+                    license_number,
+                    phone,
+                    address
+                ]);
+            }
 
             // Create a directory for the user
             const userDirectoryPath = path.resolve('C:/Users/BhavukArora/Documents/Azure Repo/5g-masterarbeit/fleetManagementApp/listedCars', newUserId);
@@ -85,7 +101,7 @@ exports.userRegistration = async (req, res) => {
             res.status(500).json({ errors: [{ msg: 'Server error' }] });
         } finally {
             if (connectToMySQL) {
-                await connectToMySQL.end(); // Close the MySQL connection
+                await connectToMySQL.release(); // Close the MySQL connectToMySQL
             }
         }
     }
