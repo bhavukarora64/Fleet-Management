@@ -31,9 +31,9 @@ exports.googleCallback = (req, res) => {
   if (req.user && req.user.user_id) {
     const userId = req.user.user_id;
     console.log('userId in login oauth:', userId)
-    res.redirect(`fleet-management-5eyg.vercel.app/dashboard?userId=${userId}`);
+    res.redirect(`https://fleet-management-5eyg.vercel.app/dashboard?userId=${userId}`);
   } else {
     console.error('Error: req.user is undefined or does not contain user_id.');
-    res.redirect('fleet-management-5eyg.vercel.app/login'); // Redirect back to login or show an error page
+    res.redirect('https://fleet-management-5eyg.vercel.app/login'); // Redirect back to login or show an error page
   }
 };

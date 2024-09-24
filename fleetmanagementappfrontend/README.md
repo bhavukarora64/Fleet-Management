@@ -9,7 +9,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [fleet-management-5eyg.vercel.app](fleet-management-5eyg.vercel.app) to view it in your browser.
+Open [https://fleet-management-5eyg.vercel.app](https://fleet-management-5eyg.vercel.app) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

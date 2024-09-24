@@ -5,9 +5,9 @@ const dashboardController = require('../controllers/dashboard');
 
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    res.redirect('fleet-management-5eyg.vercel.app/dashboard');
+    res.redirect('https://fleet-management-5eyg.vercel.app/dashboard');
   } else {
-    res.redirect('fleet-management-5eyg.vercel.app/login');
+    res.redirect('https://fleet-management-5eyg.vercel.app/login');
   }
 });
 
