@@ -12,7 +12,7 @@ const WebSocket = require('ws');
 dotenv.config();
 
 const app = express();
-const server = http.createServer(app);
+
 
 // Import WebSocket setup
 const { initializeWebSocket } = require('./helperScripts/WebSocket');
@@ -69,6 +69,14 @@ dbConnector()
   });
 
 // Route setup
+
+app.get('/favicon.ico', (req, res) => res.status(204));
+
+app.get("/", (req, res) => {
+  console.log("hello");
+  res.send("Hello, World!");
+});
+
 app.use("/vehicle", vehicle);
 app.use("/dashboard", dashboard);
 app.use("/driver", driver);
@@ -80,6 +88,14 @@ app.use("/logout", logout);
 app.use('/user', users);
 app.use('/session', sessionRoute);
 
+app.use((req, res) => {
+  console.log(`404 Not Found: ${req.method} ${req.url}`);
+  res.status(404).send("Sorry, can't find that!");
+});
+app.use((req, res, next) => {
+  console.log(`Received request: ${req.method} ${req.url}`);
+  next();
+});
 
 // Initialize WebSocket server
 initializeWebSocket(server);
