@@ -12,7 +12,7 @@ const WebSocket = require('ws');
 dotenv.config();
 
 const app = express();
-
+const server = http.createServer(app);
 
 // Import WebSocket setup
 const { initializeWebSocket } = require('./helperScripts/WebSocket');
