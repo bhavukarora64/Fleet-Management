@@ -58,7 +58,7 @@ const Register = () => {
 
     try {
       const dataToSend = { ...formFields, role };
-      const response = await axios.post('https://fleet-management-eta.vercel.app/register', dataToSend);
+      const response = await axios.post('https://fleet-management-5eyg.vercel.app//register', dataToSend);
       console.log('Registration successful:', response.data);
 
       setSuccess(true); // Show the success message

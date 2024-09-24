@@ -50,7 +50,7 @@ function Sidebar(user) { // Correctly destructuring the user prop
       const fetchVehicles = async () => {
         try {
           console.log('vehcile user id:', userId);
-          const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getvehicles', { params: { userId } });
+          const response = await axios.get('https://fleet-management-5eyg.vercel.app//vehicle/getvehicles', { params: { userId } });
           console.log('vehcile list:', response);
           setVehicles(response.data.vehicles);
         } catch (error) {
@@ -83,7 +83,7 @@ function Sidebar(user) { // Correctly destructuring the user prop
 
     try {
       console.log('Registering vehicle for user:', userId); // Debugging message
-      const response = await axios.post('https://fleet-management-eta.vercel.app/vehicle/register', {
+      const response = await axios.post('https://fleet-management-5eyg.vercel.app//vehicle/register', {
         vehicleData,
         user_id: userId,
       });

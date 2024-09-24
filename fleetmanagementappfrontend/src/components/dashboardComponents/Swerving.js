@@ -20,7 +20,7 @@ const Swerving = () => {
       if (vehicleId && userId) { // Ensure both vehicleId and userId are available
         try {
           console.log('Fetching swerving data...');
-          const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getVehiclePerformanceMetrics', {
+          const response = await axios.get('https://fleet-management-5eyg.vercel.app//vehicle/getVehiclePerformanceMetrics', {
             params: { vehicleId, userId }, // Pass both vehicleId and userId as parameters
           });
 

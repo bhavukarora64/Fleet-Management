@@ -38,7 +38,7 @@ const NavBar = () => {
         <Nav className="me-auto">
           <Nav.Link href="/" style={{ fontSize: '1rem' }}>Home</Nav.Link>
           <Nav.Link 
-            href={isAuthenticated ? `https://fleet-management-eta.vercel.app/dashboard?userId=${userId}` : 'https://fleet-management-eta.vercel.app/dashboard'} 
+            href={isAuthenticated ? `https://fleet-management-5eyg.vercel.app//dashboard?userId=${userId}` : 'https://fleet-management-5eyg.vercel.app//dashboard'} 
             style={{ fontSize: '1rem' }}
           >
             Dashboard

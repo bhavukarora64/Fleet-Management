@@ -21,7 +21,7 @@ const Maps = () => {
   const fetchVehicles = async () => {
     if (userId) {
       try {
-        const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getvehicles', {
+        const response = await axios.get('https://fleet-management-5eyg.vercel.app//vehicle/getvehicles', {
           params: { userId },
         });
 
@@ -31,7 +31,7 @@ const Maps = () => {
           // Fetch locations for each vehicle separately
           const locationPromises = vehiclesData.map(async (vehicle) => {
             try {
-              const locationResponse = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getVehiclePerformanceMetrics', {
+              const locationResponse = await axios.get('https://fleet-management-5eyg.vercel.app//vehicle/getVehiclePerformanceMetrics', {
                 params: { vehicleId: vehicle.vehicle_id, userId },
               });
               return {

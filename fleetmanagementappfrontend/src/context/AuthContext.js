@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   // Function to fetch session details
   const fetchSession = async () => {
     try {
-      const response = await axios.get('https://fleet-management-eta.vercel.app/session', { withCredentials: true });
+      const response = await axios.get('https://fleet-management-5eyg.vercel.app//session', { withCredentials: true });
       if (response.data.user) {
         console.log('userData',response.data.user )
         setIsAuthenticated(true);
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post('https://fleet-management-eta.vercel.app/logout', {}, { withCredentials: true });
+      await axios.post('https://fleet-management-5eyg.vercel.app//logout', {}, { withCredentials: true });
       setIsAuthenticated(false);
       setUserId(null);
     } catch (err) {
