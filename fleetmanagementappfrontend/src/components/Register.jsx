@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaLock, FaIdCard, FaPhone, FaHome, FaBriefcase } from 'react-icons/fa'; // Removed unused vehicle icons
+import { FaUser, FaEnvelope, FaLock, FaIdCard, FaPhone, FaHome, FaBriefcase } from 'react-icons/fa';
 import './Register.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +8,7 @@ const Register = () => {
   const [role, setRole] = useState('');
   const [formFields, setFormFields] = useState({});
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false); // New state for success message
   const navigate = useNavigate();
 
   const handleRoleChange = (e) => {
@@ -56,11 +57,14 @@ const Register = () => {
     }
 
     try {
-      // Add role to formFields
       const dataToSend = { ...formFields, role };
       const response = await axios.post('https://fleet-management-eta.vercel.app/register', dataToSend);
       console.log('Registration successful:', response.data);
-      navigate('/dashboard');
+
+      setSuccess(true); // Show the success message
+      setTimeout(() => {
+        navigate('/login'); // Redirect after 3 seconds
+      }, 3000);
     } catch (err) {
       console.log('Error during registration:', err);
       setError(err.response?.data?.msg || 'There was an error registering!');
@@ -70,7 +74,7 @@ const Register = () => {
   return (
     <div className="background-animation">
       <div className="register-form">
-        <h2>Register</h2>
+        <h2><center>Register</center></h2>
         <form onSubmit={handleSubmit}>
           {/* Common Fields */}
           <div className="form-group">
@@ -211,6 +215,11 @@ const Register = () => {
           <button type="submit" className="btn-submit">Register</button>
         </form>
         {error && <p className="error-message">{error}</p>}
+        {success && (
+          <div className="success-message">
+            <p>Congratulations, you are registered!  Redirecting...</p>
+          </div>
+        )}
       </div>
     </div>
   );

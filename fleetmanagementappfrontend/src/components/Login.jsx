@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEnvelope, FaLock } from 'react-icons/fa'; // Removed unused vehicle icons
 import axios from 'axios';
 import './Login.css';
 
@@ -21,27 +22,14 @@ const Login = () => {
       console.log('Login successful:', response); // Debugging log
       setLoggedIn(userData);
       const userId = response.data.user.user_id;
-      navigate(`/dashboard?userID=${userId}`);
+      navigate(`/dashboard?userId=${userId}`);
     } catch (err) {
       setError(err.response?.data?.msg || 'There was an error logging in!');
     }
   };
 
   const handleGoogleLogin = () => {
-    window.location.href = 'https://fleet-management-eta.vercel.app/login/auth/google'; // Redirect to the backend route for Google OAuth
-  };
-
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post('https://fleet-management-eta.vercel.app/logout', loggedIn ,{
-      withCredentials: true,
-      credentials: "include", 
-      });
-      // logout(); // Call logout function in context to update authentication state
-      navigate('/login'); // Redirect to login page or any other appropriate page
-    } catch (err) {
-      console.error('Error logging out:', err);
-    }
+    window.location.href = 'https://fleet-management-eta.vercel.app/login/auth/google';
   };
 
   return (
@@ -50,9 +38,10 @@ const Login = () => {
         <div className="login-container">
           <div className="login-form">
             <h1><center>Login</center></h1>
+            <br></br>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email"><FaEnvelope /> Email Address</label>
                 <input
                   type="email"
                   id="email"
@@ -62,7 +51,7 @@ const Login = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password"><FaLock /> Password</label>
                 <input
                   type="password"
                   id="password"
@@ -71,11 +60,9 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="form-group">
-                <label>
-                  <input type="checkbox" value="remember-me" /> Remember me
-                </label>
-              </div>
+              <br></br>
+              <br></br>
+              <br></br>
               <button type="submit" className="google-login-button">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWsR_2YI92NWxPIkYJfxXVy-LC0NFVXbo9YQ&s"
@@ -97,10 +84,6 @@ const Login = () => {
                 width={25}
               />
               <span> Login with Google Account </span>
-            </button>
-            {/* Logout Button */}
-            <button className="logout-button" onClick={handleLogout}>
-              Logout
             </button>
           </div>
         </div>

@@ -8,9 +8,9 @@ import Register from './components/Register';
 import UserManagement from './components/UserManagement';
 import Vehicles from './components/Vehicles';
 import ActivityAlerts from './components/ActivityAlerts';
-import Statistics from './components/Statistics';
-import Maps from './components/dashboardComponents/Map';
+import Maps from './components/Maps';
 import Navbar from './components/Navbar';
+import Report from './components/Report';
 
 function App() {
   return (
@@ -24,8 +24,8 @@ function App() {
           <Route path="/usermanagement" element={<UserManagement />} />
           <Route path="/vehicles" element={<Vehicles />} />
           <Route path="/activityalerts" element={<ActivityAlerts />} />
-          <Route path="/statistics" element={<Statistics />} />
           <Route path="/maps" element={<Maps />} />
+          <Route path="/report" element={<Report />} />
         </Routes>
       </Router>
   );

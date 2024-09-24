@@ -1,6 +1,4 @@
-// components/Dashboard.js
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Grid, Box } from '@mui/material';
 import Sidebar from './dashboardComponents/Sidebar';
 import GeneralInfo from './dashboardComponents/GeneralInfo';
@@ -13,15 +11,22 @@ import AggressiveAcceleration from './dashboardComponents/AggressiveAcceleration
 import Speeding from './dashboardComponents/Speeding';
 import Swerving from './dashboardComponents/Swerving';
 import UnstableMovement from './dashboardComponents/UnstableMovement';
+import { useAuth } from '../context/AuthContext'; // Import useAuth
 
 function Dashboard() {
+  const { userId, login } = useAuth(); // Access userId and login from AuthContext
 
-  const [searchParams] = useSearchParams();
-  const userId = searchParams.get('userID');
+  // useEffect to handle login based on userId
+  useEffect(() => {
+    if (userId) {
+      login(userId); // Ensure login is called only when userId is available
+    }
+  }, [userId, login]); // Dependency array ensures this runs when userId or login changes
+
   return (
     <Grid container spacing={2}>
       {/* Sidebar */}
-      <Grid item xs={3} sx={{ bgcolor: '#1976d2', color: '#ffffff', height: '135vh' }}>
+      <Grid item xs={3} sx={{ bgcolor: '#1976d2', color: '#ffffff', height: '190vh' }}>
         <Sidebar userId={userId} /> {/* Pass userId to Sidebar */}
       </Grid>
       

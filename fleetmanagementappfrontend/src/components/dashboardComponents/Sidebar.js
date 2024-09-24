@@ -4,7 +4,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon, // Import ListItemIcon
+  ListItemIcon,
   Button,
   Typography,
   TextField,
@@ -14,14 +14,15 @@ import {
   DialogTitle,
   MenuItem,
 } from '@mui/material';
-import ElectricCarIcon from '@mui/icons-material/ElectricCar'; // Import the car icon
+import ElectricCarIcon from '@mui/icons-material/ElectricCar'; // Car icon
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'; // Another car icon as an example
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 
-function Sidebar(user) {
+function Sidebar(user) { // Correctly destructuring the user prop
   const [vehicles, setVehicles] = useState([]);
-  const [userId, setUserId] = useState(user.userId);
+  const [userId, setUserId] = useState(user?.userId || ''); // Initialize with userId or an empty string
+  
   const [open, setOpen] = useState(false);
   const [vehicleData, setVehicleData] = useState({
     license_plate: '',
@@ -36,14 +37,21 @@ function Sidebar(user) {
     mileage: '',
     registration_number: '',
   });
-
   const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    // Update userId if user prop changes
+    if (user?.userId) {
+      setUserId(user.userId);
+    }
+  }, [user]);
 
   useEffect(() => {
     if (userId) {
       const fetchVehicles = async () => {
         try {
-          const response = await axios.get(`https://fleet-management-eta.vercel.app/vehicle/getvehicles?userId=${userId}`);
+          console.log('vehcile user id:', userId);
+          const response = await axios.get('https://fleet-management-eta.vercel.app/vehicle/getvehicles', { params: { userId } });
+          console.log('vehcile list:', response);
           setVehicles(response.data.vehicles);
         } catch (error) {
           console.error('Error fetching vehicles:', error);
@@ -66,20 +74,24 @@ function Sidebar(user) {
     setVehicleData({ ...vehicleData, [e.target.name]: e.target.value });
   };
 
+
   const handleRegister = async () => {
+    if (!userId) {
+      console.error('User ID is not set'); // Debugging message
+      return;
+    }
+
     try {
-      console.log(userId);
-      await axios.post('https://fleet-management-eta.vercel.app/vehicle/register', {
+      console.log('Registering vehicle for user:', userId); // Debugging message
+      const response = await axios.post('https://fleet-management-eta.vercel.app/vehicle/register', {
         vehicleData,
         user_id: userId,
       });
 
+      console.log(response.data)
       alert('Vehicle registered successfully!');
       setOpen(false);
 
-      // Refresh the list of vehicles
-      const response = await axios.get(`https://fleet-management-eta.vercel.app/vehicle/getvehicles?userId=${userId}`);
-      setVehicles(response.data.vehicles);
     } catch (error) {
       console.error('Error registering vehicle:', error);
       alert('Error registering vehicle!');
@@ -114,10 +126,17 @@ function Sidebar(user) {
         <ElectricCarIcon sx={{ mr: 1, color: '#ffffff' }} />
         Registered Vehicles
       </Typography>
+      <Button
+        variant="contained"
+        color="secondary"
+        sx={{ mt: 1, width: '100%', bgcolor: '#ff9800', '&:hover': { bgcolor: '#e68900' } }}
+        onClick={handleClickOpen}
+      >
+        Register New Vehicle
+      </Button>
       <List sx={{ flexGrow: 1 }}>
         {vehicles.map((vehicle) => (
-          <ListItem button key={vehicle.vehicle_id} onClick={() => handleVehicleSelect(vehicle.vehicle_id, userId)}>
-            {/* Add an icon in front of each vehicle */}
+          <ListItem button key={vehicle.vehicle_id} onClick={() => handleVehicleSelect(vehicle.vehicle_id)}>
             <ListItemIcon>
               <DirectionsCarIcon sx={{ color: '#ffffff' }} /> {/* Car icon */}
             </ListItemIcon>
@@ -128,14 +147,6 @@ function Sidebar(user) {
           </ListItem>
         ))}
       </List>
-      <Button
-        variant="contained"
-        color="secondary"
-        sx={{ mt: 2, width: '100%', bgcolor: '#ff9800', '&:hover': { bgcolor: '#e68900' } }}
-        onClick={handleClickOpen}
-      >
-        Register New Vehicle
-      </Button>
 
       {/* Dialog for Vehicle Registration */}
       <Dialog open={open} onClose={handleClose}>

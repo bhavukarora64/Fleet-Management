@@ -1,13 +1,15 @@
-// components/Homepage.js
-import React from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Homepage.css'; // Custom CSS for styling
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const scrollToRef = useRef(null); // Create a reference for scrolling
 
   const handleButtonClick = () => {
-    navigate('/login');
+    if (scrollToRef.current) {
+      scrollToRef.current.scrollIntoView({ behavior: 'smooth' }); // Smooth scrolling to the element
+    }
   };
 
   return (
@@ -20,7 +22,7 @@ const Homepage = () => {
             <p>Fleet4U reduces the risk of unplanned breakdowns by building custom preventive maintenance plans and speeding up the service process with automated workflows.</p>
             <div className="hero-buttons">
               <button className="btn-primary" onClick={handleButtonClick}>Learn More</button>
-              <button className="btn-secondary" onClick={() => navigate('/dashboard')}>Get Started</button>
+              <button className="btn-secondary" onClick={() => navigate('/Register')}>Get Started</button>
             </div>
           </div>
           <div className="hero-image">
@@ -35,14 +37,14 @@ const Homepage = () => {
         <p>Manage inspections, work orders, PM schedules, parts inventory, and more in a single dashboard. 
           Fleet4U turns your everyday operations data into powerful insights, so you can drive your fleet forward with confidence.</p>
         <div className="feature-buttons">
-          <button className="feature-btn-primary" onClick={handleButtonClick}>Let's Go</button>
+          <button className="feature-btn-primary" onClick={() => navigate('/dashboard')}>Let's Go</button>
           <button className="feature-btn-secondary" onClick={() => navigate('/register')}>Become a Member</button>
         </div>
         <img src="https://bsmart.global/wp-content/uploads/2024/02/Generator-gif2.gif" alt="Example" className="feature-image" />
       </section>
 
       {/* Why Fleet4U Section */}
-      <section className="cards-section">
+      <section className="cards-section" ref={scrollToRef}> {/* Attach the reference here */}
         <h1>Why Fleet4U?</h1>
         <div className="card-container">
           <div className="card">
