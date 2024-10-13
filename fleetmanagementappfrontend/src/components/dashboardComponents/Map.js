@@ -91,7 +91,7 @@ const Map = () => {
           </Box>
         ) : (
           <div className="map-content">
-            <LoadScript googleMapsApiKey="AIzaSyCS6s5EfSjff0Dv6SH5oogus0kui4hK4s8">
+            <LoadScript googleMapsApiKey="<API KEY GOES HERE>">
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={location}
